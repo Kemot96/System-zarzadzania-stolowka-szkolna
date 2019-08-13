@@ -1,0 +1,53 @@
+﻿@model Projekt.Models.Transakcja_Oplata
+
+<table class="table">
+    <tr>
+        <th>
+            Imię
+        </th>
+        <th>
+            Nazwisko
+        </th>
+        <th>
+            Klasa
+        </th>
+        <th>
+            Opłata
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Dziecko)
+    {
+        bool checkUser = false;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.klasa)
+            </td>
+            <td>
+                @foreach (var item2 in Model.Transakcja)
+                {
+                    if (item.id == item2.dziecko_id)
+                    {
+                        checkUser = true;
+                    }
+                }
+                @if (checkUser == true)
+                {
+                    @Html.Raw("TAK")
+                }
+                else
+                {
+                    @Html.Raw("NIE")
+                }
+            </td>
+        </tr>
+    }
+
+</table>

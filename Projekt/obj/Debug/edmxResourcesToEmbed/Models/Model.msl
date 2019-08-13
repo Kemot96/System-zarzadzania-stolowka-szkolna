@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StolowkaModelStoreContainer" CdmEntityContainer="StolowkaEntities">
+    <EntitySetMapping Name="Adres">
+      <EntityTypeMapping TypeName="StolowkaModel.Adres">
+        <MappingFragment StoreEntitySet="Adres">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="miasto" ColumnName="miasto" />
+          <ScalarProperty Name="kod" ColumnName="kod" />
+          <ScalarProperty Name="ulica" ColumnName="ulica" />
+          <ScalarProperty Name="numer" ColumnName="numer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dziecko">
+      <EntityTypeMapping TypeName="StolowkaModel.Dziecko">
+        <MappingFragment StoreEntitySet="Dziecko">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="klasa" ColumnName="klasa" />
+          <ScalarProperty Name="adres_id" ColumnName="adres_id" />
+          <ScalarProperty Name="konto_id" ColumnName="konto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Firma">
+      <EntityTypeMapping TypeName="StolowkaModel.Firma">
+        <MappingFragment StoreEntitySet="Firma">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+          <ScalarProperty Name="adres_id" ColumnName="adres_id" />
+          <ScalarProperty Name="kontakt_id" ColumnName="kontakt_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jadlospis">
+      <EntityTypeMapping TypeName="StolowkaModel.Jadlospis">
+        <MappingFragment StoreEntitySet="Jadlospis">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="od" ColumnName="od" />
+          <ScalarProperty Name="do" ColumnName="do" />
+          <ScalarProperty Name="poniedzialek" ColumnName="poniedzialek" />
+          <ScalarProperty Name="wtorek" ColumnName="wtorek" />
+          <ScalarProperty Name="sroda" ColumnName="sroda" />
+          <ScalarProperty Name="czwartek" ColumnName="czwartek" />
+          <ScalarProperty Name="piatek" ColumnName="piatek" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kontakt">
+      <EntityTypeMapping TypeName="StolowkaModel.Kontakt">
+        <MappingFragment StoreEntitySet="Kontakt">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Miesiac">
+      <EntityTypeMapping TypeName="StolowkaModel.Miesiac">
+        <MappingFragment StoreEntitySet="Miesiac">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nieobecnosc">
+      <EntityTypeMapping TypeName="StolowkaModel.Nieobecnosc">
+        <MappingFragment StoreEntitySet="Nieobecnosc">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="od" ColumnName="od" />
+          <ScalarProperty Name="do" ColumnName="do" />
+          <ScalarProperty Name="dziecko_id" ColumnName="dziecko_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oplata">
+      <EntityTypeMapping TypeName="StolowkaModel.Oplata">
+        <MappingFragment StoreEntitySet="Oplata">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="miesiac_id" ColumnName="miesiac_id" />
+          <ScalarProperty Name="rok_id" ColumnName="rok_id" />
+          <ScalarProperty Name="stawka_za_dzien" ColumnName="stawka_za_dzien" />
+          <ScalarProperty Name="dni_w_miesiacu" ColumnName="dni_w_miesiacu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posilek">
+      <EntityTypeMapping TypeName="StolowkaModel.Posilek">
+        <MappingFragment StoreEntitySet="Posilek">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+          <ScalarProperty Name="waga" ColumnName="waga" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pracownik">
+      <EntityTypeMapping TypeName="StolowkaModel.Pracownik">
+        <MappingFragment StoreEntitySet="Pracownik">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="stanowisko" ColumnName="stanowisko" />
+          <ScalarProperty Name="adres_id" ColumnName="adres_id" />
+          <ScalarProperty Name="kontakt_id" ColumnName="kontakt_id" />
+          <ScalarProperty Name="konto_id" ColumnName="konto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rok">
+      <EntityTypeMapping TypeName="StolowkaModel.Rok">
+        <MappingFragment StoreEntitySet="Rok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rok1" ColumnName="rok" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transakcja">
+      <EntityTypeMapping TypeName="StolowkaModel.Transakcja">
+        <MappingFragment StoreEntitySet="Transakcja">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dziecko_id" ColumnName="dziecko_id" />
+          <ScalarProperty Name="oplata_id" ColumnName="oplata_id" />
+          <ScalarProperty Name="kwota" ColumnName="kwota" />
+          <ScalarProperty Name="data_zaplaty" ColumnName="data_zaplaty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="StolowkaModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="StolowkaModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="StolowkaModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="StolowkaModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="StolowkaModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="StolowkaModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

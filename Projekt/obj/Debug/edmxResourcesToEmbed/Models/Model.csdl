@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StolowkaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="miasto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kod" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numer" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Dziecko" Relationship="Self.FK__Dziecko__adres_i__3E52440B" FromRole="Adres" ToRole="Dziecko" />
+    <NavigationProperty Name="Firma" Relationship="Self.FK__Firma__adres_id__35BCFE0A" FromRole="Adres" ToRole="Firma" />
+    <NavigationProperty Name="Pracownik" Relationship="Self.FK__Pracownik__adres__398D8EEE" FromRole="Adres" ToRole="Pracownik" />
+  </EntityType>
+  <EntityType Name="Dziecko">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="klasa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="adres_id" Type="Int32" Nullable="false" />
+    <Property Name="konto_id" Type="String" Nullable="false" />
+    <NavigationProperty Name="Adres" Relationship="Self.FK__Dziecko__adres_i__3E52440B" FromRole="Dziecko" ToRole="Adres" />
+    <NavigationProperty Name="Nieobecnosc" Relationship="Self.FK__Nieobecno__dziec__4222D4EF" FromRole="Dziecko" ToRole="Nieobecnosc" />
+    <NavigationProperty Name="Transakcja" Relationship="Self.FK__Transakcj__dziec__48CFD27E" FromRole="Dziecko" ToRole="Transakcja" />
+    <NavigationProperty Name="AspNetUsers" Relationship="StolowkaModel.FK__Dziecko__konto_i__3FD07829" FromRole="Dziecko" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="Firma">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adres_id" Type="Int32" />
+    <Property Name="kontakt_id" Type="Int32" />
+    <NavigationProperty Name="Adres" Relationship="Self.FK__Firma__adres_id__35BCFE0A" FromRole="Firma" ToRole="Adres" />
+    <NavigationProperty Name="Kontakt" Relationship="Self.FK__Firma__kontakt_i__36B12243" FromRole="Firma" ToRole="Kontakt" />
+  </EntityType>
+  <EntityType Name="Jadlospis">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="od" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="do" Type="DateTime" Nullable="false" Precision="0" annotation:StoreGeneratedPattern="None" />
+    <Property Name="poniedzialek" Type="Int32" />
+    <Property Name="wtorek" Type="Int32" />
+    <Property Name="sroda" Type="Int32" />
+    <Property Name="czwartek" Type="Int32" />
+    <Property Name="piatek" Type="Int32" />
+    <NavigationProperty Name="Posilek" Relationship="Self.FK__Jadlospis__czwar__286302EC" FromRole="Jadlospis" ToRole="Posilek" />
+    <NavigationProperty Name="Posilek1" Relationship="Self.FK__Jadlospis__piate__29572725" FromRole="Jadlospis" ToRole="Posilek" />
+    <NavigationProperty Name="Posilek2" Relationship="Self.FK__Jadlospis__ponie__25869641" FromRole="Jadlospis" ToRole="Posilek" />
+    <NavigationProperty Name="Posilek3" Relationship="Self.FK__Jadlospis__sroda__276EDEB3" FromRole="Jadlospis" ToRole="Posilek" />
+    <NavigationProperty Name="Posilek4" Relationship="Self.FK__Jadlospis__wtore__267ABA7A" FromRole="Jadlospis" ToRole="Posilek" />
+  </EntityType>
+  <EntityType Name="Kontakt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefon" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Firma" Relationship="Self.FK__Firma__kontakt_i__36B12243" FromRole="Kontakt" ToRole="Firma" />
+    <NavigationProperty Name="Pracownik" Relationship="Self.FK__Pracownik__konta__3A81B327" FromRole="Kontakt" ToRole="Pracownik" />
+  </EntityType>
+  <EntityType Name="Miesiac">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Oplata" Relationship="Self.FK__Oplata__miesiac___44FF419A" FromRole="Miesiac" ToRole="Oplata" />
+  </EntityType>
+  <EntityType Name="Nieobecnosc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="od" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="do" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="dziecko_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dziecko" Relationship="Self.FK__Nieobecno__dziec__4222D4EF" FromRole="Nieobecnosc" ToRole="Dziecko" />
+  </EntityType>
+  <EntityType Name="Oplata">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="miesiac_id" Type="Int32" Nullable="false" />
+    <Property Name="rok_id" Type="Int32" Nullable="false" />
+    <Property Name="stawka_za_dzien" Type="Single" Nullable="false" />
+    <Property Name="dni_w_miesiacu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Miesiac" Relationship="Self.FK__Oplata__miesiac___44FF419A" FromRole="Oplata" ToRole="Miesiac" />
+    <NavigationProperty Name="Rok" Relationship="Self.FK__Oplata__rok_id__45F365D3" FromRole="Oplata" ToRole="Rok" />
+    <NavigationProperty Name="Transakcja" Relationship="Self.FK__Transakcj__oplat__49C3F6B7" FromRole="Oplata" ToRole="Transakcja" />
+  </EntityType>
+  <EntityType Name="Posilek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="waga" Type="Int32" />
+    <NavigationProperty Name="Jadlospis" Relationship="Self.FK__Jadlospis__czwar__286302EC" FromRole="Posilek" ToRole="Jadlospis" />
+    <NavigationProperty Name="Jadlospis1" Relationship="Self.FK__Jadlospis__piate__29572725" FromRole="Posilek" ToRole="Jadlospis" />
+    <NavigationProperty Name="Jadlospis2" Relationship="Self.FK__Jadlospis__ponie__25869641" FromRole="Posilek" ToRole="Jadlospis" />
+    <NavigationProperty Name="Jadlospis3" Relationship="Self.FK__Jadlospis__sroda__276EDEB3" FromRole="Posilek" ToRole="Jadlospis" />
+    <NavigationProperty Name="Jadlospis4" Relationship="Self.FK__Jadlospis__wtore__267ABA7A" FromRole="Posilek" ToRole="Jadlospis" />
+  </EntityType>
+  <EntityType Name="Pracownik">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stanowisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adres_id" Type="Int32" Nullable="false" />
+    <Property Name="kontakt_id" Type="Int32" />
+    <Property Name="konto_id" Type="String" />
+    <NavigationProperty Name="Adres" Relationship="Self.FK__Pracownik__adres__398D8EEE" FromRole="Pracownik" ToRole="Adres" />
+    <NavigationProperty Name="Kontakt" Relationship="Self.FK__Pracownik__konta__3A81B327" FromRole="Pracownik" ToRole="Kontakt" />
+    <NavigationProperty Name="AspNetUsers" Relationship="StolowkaModel.FK__Pracownik__konto__40C49C62" FromRole="Pracownik" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="Rok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rok1" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Oplata" Relationship="Self.FK__Oplata__rok_id__45F365D3" FromRole="Rok" ToRole="Oplata" />
+  </EntityType>
+  <EntityType Name="Transakcja">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dziecko_id" Type="Int32" Nullable="false" />
+    <Property Name="oplata_id" Type="Int32" Nullable="false" />
+    <Property Name="kwota" Type="Single" Nullable="false" />
+    <Property Name="data_zaplaty" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Dziecko" Relationship="Self.FK__Transakcj__dziec__48CFD27E" FromRole="Transakcja" ToRole="Dziecko" />
+    <NavigationProperty Name="Oplata" Relationship="Self.FK__Transakcj__oplat__49C3F6B7" FromRole="Transakcja" ToRole="Oplata" />
+  </EntityType>
+  <Association Name="FK__Dziecko__adres_i__3E52440B">
+    <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+    <End Role="Dziecko" Type="Self.Dziecko" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adres">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Dziecko">
+        <PropertyRef Name="adres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Firma__adres_id__35BCFE0A">
+    <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+    <End Role="Firma" Type="Self.Firma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adres">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Firma">
+        <PropertyRef Name="adres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownik__adres__398D8EEE">
+    <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+    <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adres">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pracownik">
+        <PropertyRef Name="adres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Nieobecno__dziec__4222D4EF">
+    <End Role="Dziecko" Type="Self.Dziecko" Multiplicity="1" />
+    <End Role="Nieobecnosc" Type="Self.Nieobecnosc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dziecko">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Nieobecnosc">
+        <PropertyRef Name="dziecko_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transakcj__dziec__48CFD27E">
+    <End Role="Dziecko" Type="Self.Dziecko" Multiplicity="1" />
+    <End Role="Transakcja" Type="Self.Transakcja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dziecko">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Transakcja">
+        <PropertyRef Name="dziecko_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Firma__kontakt_i__36B12243">
+    <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+    <End Role="Firma" Type="Self.Firma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kontakt">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Firma">
+        <PropertyRef Name="kontakt_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__czwar__286302EC">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="czwartek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__piate__29572725">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="piatek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__ponie__25869641">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="poniedzialek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__sroda__276EDEB3">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="sroda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__wtore__267ABA7A">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="wtorek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownik__konta__3A81B327">
+    <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+    <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kontakt">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pracownik">
+        <PropertyRef Name="kontakt_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Oplata__miesiac___44FF419A">
+    <End Role="Miesiac" Type="Self.Miesiac" Multiplicity="1" />
+    <End Role="Oplata" Type="Self.Oplata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Miesiac">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Oplata">
+        <PropertyRef Name="miesiac_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Oplata__rok_id__45F365D3">
+    <End Role="Rok" Type="Self.Rok" Multiplicity="1" />
+    <End Role="Oplata" Type="Self.Oplata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Oplata">
+        <PropertyRef Name="rok_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transakcj__oplat__49C3F6B7">
+    <End Role="Oplata" Type="Self.Oplata" Multiplicity="1" />
+    <End Role="Transakcja" Type="Self.Transakcja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oplata">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Transakcja">
+        <PropertyRef Name="oplata_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StolowkaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adres" EntityType="Self.Adres" />
+    <EntitySet Name="Dziecko" EntityType="Self.Dziecko" />
+    <EntitySet Name="Firma" EntityType="Self.Firma" />
+    <EntitySet Name="Jadlospis" EntityType="Self.Jadlospis" />
+    <EntitySet Name="Kontakt" EntityType="Self.Kontakt" />
+    <EntitySet Name="Miesiac" EntityType="Self.Miesiac" />
+    <EntitySet Name="Nieobecnosc" EntityType="Self.Nieobecnosc" />
+    <EntitySet Name="Oplata" EntityType="Self.Oplata" />
+    <EntitySet Name="Posilek" EntityType="Self.Posilek" />
+    <EntitySet Name="Pracownik" EntityType="Self.Pracownik" />
+    <EntitySet Name="Rok" EntityType="Self.Rok" />
+    <EntitySet Name="Transakcja" EntityType="Self.Transakcja" />
+    <AssociationSet Name="FK__Dziecko__adres_i__3E52440B" Association="Self.FK__Dziecko__adres_i__3E52440B">
+      <End Role="Adres" EntitySet="Adres" />
+      <End Role="Dziecko" EntitySet="Dziecko" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Firma__adres_id__35BCFE0A" Association="Self.FK__Firma__adres_id__35BCFE0A">
+      <End Role="Adres" EntitySet="Adres" />
+      <End Role="Firma" EntitySet="Firma" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownik__adres__398D8EEE" Association="Self.FK__Pracownik__adres__398D8EEE">
+      <End Role="Adres" EntitySet="Adres" />
+      <End Role="Pracownik" EntitySet="Pracownik" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Nieobecno__dziec__4222D4EF" Association="Self.FK__Nieobecno__dziec__4222D4EF">
+      <End Role="Dziecko" EntitySet="Dziecko" />
+      <End Role="Nieobecnosc" EntitySet="Nieobecnosc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transakcj__dziec__48CFD27E" Association="Self.FK__Transakcj__dziec__48CFD27E">
+      <End Role="Dziecko" EntitySet="Dziecko" />
+      <End Role="Transakcja" EntitySet="Transakcja" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Firma__kontakt_i__36B12243" Association="Self.FK__Firma__kontakt_i__36B12243">
+      <End Role="Kontakt" EntitySet="Kontakt" />
+      <End Role="Firma" EntitySet="Firma" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__czwar__286302EC" Association="Self.FK__Jadlospis__czwar__286302EC">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__piate__29572725" Association="Self.FK__Jadlospis__piate__29572725">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__ponie__25869641" Association="Self.FK__Jadlospis__ponie__25869641">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__sroda__276EDEB3" Association="Self.FK__Jadlospis__sroda__276EDEB3">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__wtore__267ABA7A" Association="Self.FK__Jadlospis__wtore__267ABA7A">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownik__konta__3A81B327" Association="Self.FK__Pracownik__konta__3A81B327">
+      <End Role="Kontakt" EntitySet="Kontakt" />
+      <End Role="Pracownik" EntitySet="Pracownik" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Oplata__miesiac___44FF419A" Association="Self.FK__Oplata__miesiac___44FF419A">
+      <End Role="Miesiac" EntitySet="Miesiac" />
+      <End Role="Oplata" EntitySet="Oplata" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Oplata__rok_id__45F365D3" Association="Self.FK__Oplata__rok_id__45F365D3">
+      <End Role="Rok" EntitySet="Rok" />
+      <End Role="Oplata" EntitySet="Oplata" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transakcj__oplat__49C3F6B7" Association="Self.FK__Transakcj__oplat__49C3F6B7">
+      <End Role="Oplata" EntitySet="Oplata" />
+      <End Role="Transakcja" EntitySet="Transakcja" />
+    </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="StolowkaModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="StolowkaModel.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="StolowkaModel.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="StolowkaModel.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="StolowkaModel.AspNetUsers" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="StolowkaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="StolowkaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="StolowkaModel.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dziecko__konto_i__3FD07829" Association="StolowkaModel.FK__Dziecko__konto_i__3FD07829">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Dziecko" EntitySet="Dziecko" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownik__konto__40C49C62" Association="StolowkaModel.FK__Pracownik__konto__40C49C62">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Pracownik" EntitySet="Pracownik" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="StolowkaModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="StolowkaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="StolowkaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="StolowkaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="StolowkaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="StolowkaModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+    <NavigationProperty Name="Dziecko" Relationship="StolowkaModel.FK__Dziecko__konto_i__3FD07829" FromRole="AspNetUsers" ToRole="Dziecko" />
+    <NavigationProperty Name="Pracownik" Relationship="StolowkaModel.FK__Pracownik__konto__40C49C62" FromRole="AspNetUsers" ToRole="Pracownik" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="StolowkaModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="StolowkaModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="StolowkaModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="StolowkaModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="StolowkaModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+    <End Type="StolowkaModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+  </Association>
+  <Association Name="FK__Dziecko__konto_i__3FD07829">
+    <End Type="StolowkaModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="StolowkaModel.Dziecko" Role="Dziecko" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dziecko">
+        <PropertyRef Name="konto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownik__konto__40C49C62">
+    <End Type="StolowkaModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="StolowkaModel.Pracownik" Role="Pracownik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pracownik">
+        <PropertyRef Name="konto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

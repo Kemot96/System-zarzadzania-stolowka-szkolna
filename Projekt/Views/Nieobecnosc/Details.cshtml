@@ -1,0 +1,42 @@
+﻿@model Projekt.Models.Nieobecnosc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Nieobecnosc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.od)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.od)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.@do)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.@do)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dziecko.imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dziecko.imie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

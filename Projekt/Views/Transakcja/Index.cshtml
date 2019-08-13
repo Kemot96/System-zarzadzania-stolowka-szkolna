@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Projekt.Models.Transakcja>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.kwota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_zaplaty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dziecko.imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Oplata.id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.kwota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_zaplaty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dziecko.imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oplata.id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

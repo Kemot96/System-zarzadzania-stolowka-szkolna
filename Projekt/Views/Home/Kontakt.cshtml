@@ -1,0 +1,32 @@
+﻿@model Projekt.Models.Firma_Pracownik
+
+<div>
+    <b>Kontakt z kierownikiem stołówki:</b>
+</div>
+
+@foreach (var item in Model.Pracownik)
+{
+    @Html.DisplayFor(modelItem => item.imie) @Html.Raw(" ")
+    @Html.DisplayFor(modelItem => item.nazwisko)<br />
+    @Html.Raw("Telefon: ")
+    @Html.DisplayFor(modelItem => item.Kontakt.telefon)<br />
+    @Html.Raw("Email: ")
+    @Html.DisplayFor(modelItem => item.Kontakt.email)<br /><br />
+}
+
+<div>
+    <b>Kontakt do firm zaopatrywujących: </b>
+</div>
+
+@foreach (var item in Model.Firma)
+{
+    @Html.DisplayFor(modelItem => item.nazwa)<br />
+    @Html.Raw("Adres: ")
+    @Html.DisplayFor(modelItem => item.Adres.miasto) @Html.Raw(" ") @Html.DisplayFor(modelItem => item.Adres.kod) @Html.Raw(" ")
+    @Html.DisplayFor(modelItem => item.Adres.ulica) @Html.Raw(" ") @Html.DisplayFor(modelItem => item.Adres.numer)<br />
+    @Html.Raw("Telefon: ")
+    @Html.DisplayFor(modelItem => item.Kontakt.telefon)<br />
+    @Html.Raw("Email: ")
+    @Html.DisplayFor(modelItem => item.Kontakt.email)<br /><br />
+}
+

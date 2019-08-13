@@ -1,0 +1,54 @@
+﻿@model Projekt.Models.Jadlospis_Oplata
+
+
+@foreach (var item in Model.Oplata)
+{
+    <div>Za miesiąc @ViewBag.currentMonth @ViewBag.currentYear należy zapłacić: @Html.DisplayFor(modelItem => item.cena) zł (stawka za dzień wynosi @Html.DisplayFor(modelItem => item.stawka_za_dzien) zł)</div>
+}
+
+
+@foreach (var item in Model.Jadlospis)
+{
+    <div>Menu na tydzień od @Html.DisplayFor(modelItem => item.od) do @Html.DisplayFor(modelItem => item.@do)</div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Poniedziałek
+        </th>
+        <th>
+            Wtorek
+        </th>
+        <th>
+            Środa
+        </th>
+        <th>
+            Czwartek
+        </th>
+        <th>
+            Piątek
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.Jadlospis)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posilek.nazwa) @Html.DisplayFor(modelItem => item.Posilek.waga) @Html.Raw("g")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posilek1.nazwa) @Html.DisplayFor(modelItem => item.Posilek1.waga) @Html.Raw("g")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posilek2.nazwa) @Html.DisplayFor(modelItem => item.Posilek2.waga) @Html.Raw("g")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posilek3.nazwa) @Html.DisplayFor(modelItem => item.Posilek3.waga) @Html.Raw("g")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posilek4.nazwa) @Html.DisplayFor(modelItem => item.Posilek4.waga) @Html.Raw("g")
+        </td>
+    </tr>
+    }
+</table>

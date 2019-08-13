@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+
+
+
+    @if (User.IsInRole("uzytkownik"))
+    {
+        @Html.ActionLink("Historia płatności", "Platnosci", "Home")<br />
+    }
+    @if (User.IsInRole("uzytkownik"))
+    {
+        @Html.ActionLink("Nieobecności", "Nieobecnosci", "Home")<br />
+    }
+
+    @if (User.IsInRole("uzytkownik"))
+    {
+        @Html.ActionLink("Zapłać", "Zaplata", "Home")<br />
+    }
+
+    @if (User.IsInRole("kierownik"))
+    {
+        @Html.ActionLink("Lista dzieci", "Dzieci", "Home")<br />
+    }
+
+    </div>

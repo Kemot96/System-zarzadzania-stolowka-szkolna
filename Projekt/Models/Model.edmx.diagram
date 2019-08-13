@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="815c062dbc3647cca2404a7a64636943" Name="Diagram1" ZoomLevel="111">
+        <EntityTypeShape EntityType="StolowkaModel.Adres" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Dziecko" Width="1.5" PointX="8" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Firma" Width="1.5" PointX="11" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Jadlospis" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Kontakt" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Miesiac" Width="1.5" PointX="3.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Nieobecnosc" Width="1.5" PointX="10.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Oplata" Width="1.5" PointX="8" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Posilek" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Pracownik" Width="1.5" PointX="8" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Rok" Width="1.5" PointX="5.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StolowkaModel.Transakcja" Width="1.5" PointX="10.25" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="StolowkaModel.FK__Dziecko__adres_i__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Firma__adres_id__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Pracownik__adres__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Nieobecno__dziec__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Transakcj__dziec__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Firma__kontakt_i__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Jadlospis__czwar__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Jadlospis__piate__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Jadlospis__ponie__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Jadlospis__sroda__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Jadlospis__wtore__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Pracownik__konta__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Oplata__miesiac___44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Oplata__rok_id__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="StolowkaModel.FK__Transakcj__oplat__49C3F6B7" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StolowkaModel.C__MigrationHistory" Width="1.5" PointX="0.875" PointY="5.375" />
+        <EntityTypeShape EntityType="StolowkaModel.AspNetRoles" Width="1.5" PointX="0.875" PointY="11" />
+        <EntityTypeShape EntityType="StolowkaModel.AspNetUserClaims" Width="1.625" PointX="0.5" PointY="8.125" />
+        <EntityTypeShape EntityType="StolowkaModel.AspNetUserLogins" Width="1.875" PointX="3.25" PointY="6.75" />
+        <EntityTypeShape EntityType="StolowkaModel.AspNetUsers" Width="1.5" PointX="5.5" PointY="9.25" />
+        <AssociationConnector Association="StolowkaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="StolowkaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="StolowkaModel.AspNetUserRoles" />
+        <AssociationConnector Association="StolowkaModel.FK__Dziecko__konto_i__3FD07829" />
+        <AssociationConnector Association="StolowkaModel.FK__Pracownik__konto__40C49C62" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

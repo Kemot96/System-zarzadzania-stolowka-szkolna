@@ -1,0 +1,50 @@
+﻿@model Projekt.Models.Transakcja
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transakcja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.kwota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kwota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_zaplaty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_zaplaty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dziecko.imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dziecko.imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oplata.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oplata.id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

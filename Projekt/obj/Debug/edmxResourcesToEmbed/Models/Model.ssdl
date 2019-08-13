@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StolowkaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="miasto" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="kod" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ulica" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="numer" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" StoreGeneratedPattern="None" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" StoreGeneratedPattern="None" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dziecko">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imie" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="klasa" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="adres_id" Type="int" Nullable="false" />
+    <Property Name="konto_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Firma">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="adres_id" Type="int" />
+    <Property Name="kontakt_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Jadlospis">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="od" Type="date" Nullable="false" />
+    <Property Name="do" Type="date" Nullable="false" />
+    <Property Name="poniedzialek" Type="int" />
+    <Property Name="wtorek" Type="int" />
+    <Property Name="sroda" Type="int" />
+    <Property Name="czwartek" Type="int" />
+    <Property Name="piatek" Type="int" />
+  </EntityType>
+  <EntityType Name="Kontakt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="telefon" Type="char" MaxLength="9" />
+  </EntityType>
+  <EntityType Name="Miesiac">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nieobecnosc">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="od" Type="date" Nullable="false" />
+    <Property Name="do" Type="date" Nullable="false" />
+    <Property Name="dziecko_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Oplata">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="miesiac_id" Type="int" Nullable="false" />
+    <Property Name="rok_id" Type="int" Nullable="false" />
+    <Property Name="stawka_za_dzien" Type="real" Nullable="false" />
+    <Property Name="dni_w_miesiacu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Posilek">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="waga" Type="int" />
+  </EntityType>
+  <EntityType Name="Pracownik">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imie" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="stanowisko" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="adres_id" Type="int" Nullable="false" />
+    <Property Name="kontakt_id" Type="int" />
+    <Property Name="konto_id" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Rok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rok" Type="char" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transakcja">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dziecko_id" Type="int" Nullable="false" />
+    <Property Name="oplata_id" Type="int" Nullable="false" />
+    <Property Name="kwota" Type="real" Nullable="false" />
+    <Property Name="data_zaplaty" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Dziecko__adres_i__3A4CA8FD">
+    <End Role="Adres" Type="Self.Adres" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dziecko" Type="Self.Dziecko" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adres">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Dziecko">
+        <PropertyRef Name="adres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dziecko__konto_i__3FD07829">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dziecko" Type="Self.Dziecko" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dziecko">
+        <PropertyRef Name="konto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Firma__adres_id__73852659">
+    <End Role="Adres" Type="Self.Adres" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Firma" Type="Self.Firma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adres">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Firma">
+        <PropertyRef Name="adres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Firma__kontakt_i__74794A92">
+    <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Firma" Type="Self.Firma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kontakt">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Firma">
+        <PropertyRef Name="kontakt_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__czwar__286302EC">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="czwartek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__piate__29572725">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="piatek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__ponie__0697FACD">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="poniedzialek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__sroda__276EDEB3">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="sroda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jadlospis__wtore__267ABA7A">
+    <End Role="Posilek" Type="Self.Posilek" Multiplicity="0..1" />
+    <End Role="Jadlospis" Type="Self.Jadlospis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posilek">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Jadlospis">
+        <PropertyRef Name="wtorek" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Nieobecno__dziec__4D5F7D71">
+    <End Role="Dziecko" Type="Self.Dziecko" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Nieobecnosc" Type="Self.Nieobecnosc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dziecko">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Nieobecnosc">
+        <PropertyRef Name="dziecko_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Oplata__miesiac___7A3223E8">
+    <End Role="Miesiac" Type="Self.Miesiac" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Oplata" Type="Self.Oplata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Miesiac">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Oplata">
+        <PropertyRef Name="miesiac_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Oplata__rok_id__7B264821">
+    <End Role="Rok" Type="Self.Rok" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Oplata" Type="Self.Oplata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rok">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Oplata">
+        <PropertyRef Name="rok_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownik__adres__7C1A6C5A">
+    <End Role="Adres" Type="Self.Adres" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adres">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pracownik">
+        <PropertyRef Name="adres_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownik__konta__7D0E9093">
+    <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kontakt">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Pracownik">
+        <PropertyRef Name="kontakt_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pracownik__konto__40C49C62">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pracownik">
+        <PropertyRef Name="konto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transakcj__dziec__607251E5">
+    <End Role="Dziecko" Type="Self.Dziecko" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Transakcja" Type="Self.Transakcja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dziecko">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Transakcja">
+        <PropertyRef Name="dziecko_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transakcj__oplat__6166761E">
+    <End Role="Oplata" Type="Self.Oplata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Transakcja" Type="Self.Transakcja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oplata">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Transakcja">
+        <PropertyRef Name="oplata_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StolowkaModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dziecko" EntityType="Self.Dziecko" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Firma" EntityType="Self.Firma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jadlospis" EntityType="Self.Jadlospis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kontakt" EntityType="Self.Kontakt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Miesiac" EntityType="Self.Miesiac" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nieobecnosc" EntityType="Self.Nieobecnosc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oplata" EntityType="Self.Oplata" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Posilek" EntityType="Self.Posilek" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pracownik" EntityType="Self.Pracownik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rok" EntityType="Self.Rok" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transakcja" EntityType="Self.Transakcja" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Dziecko__adres_i__3A4CA8FD" Association="Self.FK__Dziecko__adres_i__3A4CA8FD">
+      <End Role="Adres" EntitySet="Adres" />
+      <End Role="Dziecko" EntitySet="Dziecko" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dziecko__konto_i__3FD07829" Association="Self.FK__Dziecko__konto_i__3FD07829">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Dziecko" EntitySet="Dziecko" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Firma__adres_id__73852659" Association="Self.FK__Firma__adres_id__73852659">
+      <End Role="Adres" EntitySet="Adres" />
+      <End Role="Firma" EntitySet="Firma" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Firma__kontakt_i__74794A92" Association="Self.FK__Firma__kontakt_i__74794A92">
+      <End Role="Kontakt" EntitySet="Kontakt" />
+      <End Role="Firma" EntitySet="Firma" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__czwar__286302EC" Association="Self.FK__Jadlospis__czwar__286302EC">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__piate__29572725" Association="Self.FK__Jadlospis__piate__29572725">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__ponie__0697FACD" Association="Self.FK__Jadlospis__ponie__0697FACD">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__sroda__276EDEB3" Association="Self.FK__Jadlospis__sroda__276EDEB3">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jadlospis__wtore__267ABA7A" Association="Self.FK__Jadlospis__wtore__267ABA7A">
+      <End Role="Posilek" EntitySet="Posilek" />
+      <End Role="Jadlospis" EntitySet="Jadlospis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Nieobecno__dziec__4D5F7D71" Association="Self.FK__Nieobecno__dziec__4D5F7D71">
+      <End Role="Dziecko" EntitySet="Dziecko" />
+      <End Role="Nieobecnosc" EntitySet="Nieobecnosc" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Oplata__miesiac___7A3223E8" Association="Self.FK__Oplata__miesiac___7A3223E8">
+      <End Role="Miesiac" EntitySet="Miesiac" />
+      <End Role="Oplata" EntitySet="Oplata" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Oplata__rok_id__7B264821" Association="Self.FK__Oplata__rok_id__7B264821">
+      <End Role="Rok" EntitySet="Rok" />
+      <End Role="Oplata" EntitySet="Oplata" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownik__adres__7C1A6C5A" Association="Self.FK__Pracownik__adres__7C1A6C5A">
+      <End Role="Adres" EntitySet="Adres" />
+      <End Role="Pracownik" EntitySet="Pracownik" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownik__konta__7D0E9093" Association="Self.FK__Pracownik__konta__7D0E9093">
+      <End Role="Kontakt" EntitySet="Kontakt" />
+      <End Role="Pracownik" EntitySet="Pracownik" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pracownik__konto__40C49C62" Association="Self.FK__Pracownik__konto__40C49C62">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Pracownik" EntitySet="Pracownik" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transakcj__dziec__607251E5" Association="Self.FK__Transakcj__dziec__607251E5">
+      <End Role="Dziecko" EntitySet="Dziecko" />
+      <End Role="Transakcja" EntitySet="Transakcja" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transakcj__oplat__6166761E" Association="Self.FK__Transakcj__oplat__6166761E">
+      <End Role="Oplata" EntitySet="Oplata" />
+      <End Role="Transakcja" EntitySet="Transakcja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,74 @@
+﻿@model Projekt.Models.Jadlospis
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Jadlospis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.od)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.od)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.@do)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.@do)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Posilek.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Posilek.nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Posilek1.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Posilek1.nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Posilek2.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Posilek2.nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Posilek3.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Posilek3.nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Posilek4.nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Posilek4.nazwa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

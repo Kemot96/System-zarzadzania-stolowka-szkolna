@@ -1,0 +1,24 @@
+﻿@model Projekt.Models.Transakcja_Oplata
+
+Aktualny miesiąc:
+@foreach (var item in Model.Oplata)
+{
+<div>
+    @Html.DisplayFor(modelItem => item.Miesiac.nazwa) @Html.Raw(" ") @Html.DisplayFor(modelItem => item.Rok.rok1)
+    @if (Model.Transakcja.Any())
+    {
+        @Html.Raw("Zapłacono ") @Html.DisplayFor(modelItem => item.cena) @Html.Raw(" zł")
+    }
+    else
+    {
+        @Html.Raw(" Do zapłaty: ") @Html.DisplayFor(modelItem => item.cena) @Html.Raw(" zł")
+        @Html.ActionLink("Zapłać PayPal", "PaymentWithPaypal", "Home")<br />
+    }
+</div>
+}
+
+
+
+
+
+

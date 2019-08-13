@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Projekt.Models.Transakcja>
+
+<table class="table">
+    <tr>
+        <th>
+            Kwota
+        </th>
+        <th>
+            Data zapłaty
+        </th>
+        <th>
+            Miesiąc
+        </th>
+        <th>
+            Rok
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.kwota) @Html.Raw("zł")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_zaplaty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oplata.Miesiac.nazwa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oplata.Rok.rok1)
+        </td>
+    </tr>
+            }
+    </table>
+
